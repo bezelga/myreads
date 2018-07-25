@@ -14,7 +14,8 @@ class BooksApp extends React.Component {
     showSearchPage: false,
     currentlyReading: [],
     wantToRead: [],
-    read: []
+    read: [],
+    none: []
   }
 
   componentDidMount() {
@@ -31,11 +32,18 @@ class BooksApp extends React.Component {
     books.filter(book => (book.shelf === shelf))
   )
 
-  changeBookState = (currentShelf) => (bookId) => (newShelf) => {
-    console.log(bookId, newShelf)
-    // remove from previous list
-    // add to new list
-    // this.setState()
+  changeBookState = (currentShelf) => (bookTitle) => (newShelf) => {
+    if (currentShelf === newShelf) { return }
+    const book = this.state[currentShelf].find((book) => (
+      book.title === bookTitle
+    ))
+
+    this.setState({
+       [currentShelf]: this.state[currentShelf].filter((book) => (
+         book.title !== bookTitle
+       )),
+       [newShelf]: [...this.state[newShelf], book],
+    })
   }
 
   render() {
@@ -70,17 +78,17 @@ class BooksApp extends React.Component {
             <div className="list-books-content">
               <div>
                 <BookShelf
-                  status="Currently Reading"
+                  status="currentlyReading"
                   books={this.state.currentlyReading}
                   changeBookStateFunction={this.changeBookState("currentlyReading")}
                 />
                 <BookShelf
-                  status="Want to Read"
+                  status="wantToRead"
                   books={this.state.wantToRead}
                   changeBookStateFunction={this.changeBookState("wantToRead")}
                 />
                 <BookShelf
-                  status="Read"
+                  status="read"
                   books={this.state.read}
                   changeBookStateFunction={this.changeBookState("read")}
                 />

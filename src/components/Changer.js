@@ -1,12 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-
-const states = [
-  { value: "currentlyReading", humanized: "Currently Reading" },
-  { value: "wantToRead", humanized: "Want to Read" },
-  { value: "read", humanized: "Read" },
-  { value: "none", humanized: "None" }
-]
+import { shelvesDictionary } from '../utils'
 
 class Changer extends Component {
   render () {
@@ -17,8 +11,8 @@ class Changer extends Component {
          onChange={(event) => this.props.changeBookStateFunction(event.target.value)}
        >
           <option value="move" disabled>Move to...</option>
-          {states.map((state) => (
-            <option key={state.value} value={state.value}> {state.humanized} </option>
+          {Object.entries(shelvesDictionary).map(([key, value]) => (
+            <option key={key} value={key}>{value}</option>
           ))}
         </select>
       </div>
