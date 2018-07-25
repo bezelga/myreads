@@ -4,7 +4,6 @@ import Book from './Book'
 
 class BookShelf extends Component {
   render() {
-    console.log("BOOKS", this.props.books)
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.status}</h2>
@@ -14,7 +13,7 @@ class BookShelf extends Component {
               <li key={book.title}>
                 <Book 
                   title={book.title}
-                  authors={book.authors}
+                  authors={book.authors.join(', ')}
                   shelf={this.props.status}
                   coverURL={book.imageLinks && book.imageLinks.thumbnail}
                   changeBookStateFunction={this.props.changeBookStateFunction}

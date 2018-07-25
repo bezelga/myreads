@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import BooksApp from '../App';
 
 const states = [
   { value: "currentlyReading", humanized: "Currently Reading" },
