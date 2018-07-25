@@ -1,40 +1,43 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelf from './components/BookShelf'
 
-const googleBooksURL = "http://books.google.com/books/content"
-
 class BooksApp extends React.Component {
   state = {
-    currentlyReadingBooks: [
-      { title: "To kill a Mocking Bird",
-        coverURL: `${googleBooksURL}?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api`,
-        authors: 'Harper Lee' },
-      { title: "Ender's Game",
-        coverURL: "http://books.google.com/books/content?id=yDtCuFHXbAYC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72RRiTR6U5OUg3IY_LpHTL2NztVWAuZYNFE8dUuC0VlYabeyegLzpAnDPeWxE6RHi0C2ehrR9Gv20LH2dtjpbcUcs8YnH5VCCAH0Y2ICaKOTvrZTCObQbsfp4UbDqQyGISCZfGN&source=gbs_api",
-        authors: 'Orson Scott Card' },
-    ],
-    wantToRead: [
-      { title: "1776",
-        coverURL: "http://books.google.com/books/content?id=uu1mC6zWNTwC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73pGHfBNSsJG9Y8kRBpmLUft9O4BfItHioHolWNKOdLavw-SLcXADy3CPAfJ0_qMb18RmCa7Ds1cTdpM3dxAGJs8zfCfm8c6ggBIjzKT7XR5FIB53HHOhnsT7a0Cc-PpneWq9zX&source=gbs_api",
-        authors: 'David McCullough' },
-      { title: "Harry Potter and the Sorcerer's Stone",
-        coverURL: "http://books.google.com/books/content?id=uu1mC6zWNTwC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73pGHfBNSsJG9Y8kRBpmLUft9O4BfItHioHolWNKOdLavw-SLcXADy3CPAfJ0_qMb18RmCa7Ds1cTdpM3dxAGJs8zfCfm8c6ggBIjzKT7XR5FIB53HHOhnsT7a0Cc-PpneWq9zX&source=gbs_api",
-        authors: 'J.K. Rowling' },
-    ],
-    read: [
-      { title: "The Adventures of Tom Sawyer",
-        coverURL: "http://books.google.com/books/content?id=32haAAAAMAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72yckZ5f5bDFVIf7BGPbjA0KYYtlQ__nWB-hI_YZmZ-fScYwFy4O_fWOcPwf-pgv3pPQNJP_sT5J_xOUciD8WaKmevh1rUR-1jk7g1aCD_KeJaOpjVu0cm_11BBIUXdxbFkVMdi&source=gbs_api",
-        authors: 'Mark Twain' },
-    ],
     /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
+    showSearchPage: false,
+    books: [],
+    currentlyReading: [],
+    wantToRead: [],
+    read: []
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => (
+      this.setState({
+        books: books,
+        currentlyReading: this.booksByShelf(books, "currentlyReading"),
+        wantToRead: this.booksByShelf(books, "wantToRead"),
+        read: this.booksByShelf(books, "read")
+      })
+    ))
+  }
+
+  booksByShelf = (books, shelf) => (
+    books.filter(book => (book.shelf === shelf))
+  )
+
+  changeBookState = (currentShelf) => (bookId) => (newShelf) => {
+    console.log(bookId, newShelf)
+    // remove from previous list
+    // add to new list
+    // this.setState()
   }
 
   render() {
@@ -68,9 +71,12 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                <BookShelf status="Currently Reading" books={this.state.currentlyReadingBooks}/>
-                <BookShelf status="Want to Read" books={this.state.wantToRead}/>
-                <BookShelf status="Read" books={this.state.read}/>
+                <BookShelf status="Currently Reading" 
+                  books={this.state.currentlyReading} 
+                  changeBookStateFunction={this.changeBookState("currentlyReading")}
+                />
+                {/*<BookShelf status="Want to Read" books={this.state.wantToRead}/>
+                <BookShelf status="Read" books={this.state.read}/> */}
               </div>
             </div>
             <div className="open-search">
