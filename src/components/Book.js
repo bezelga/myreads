@@ -13,7 +13,7 @@ class Book extends Component {
            backgroundImage: `url(${this.props.coverURL})`
           }}>
         </div>
-        <Changer currentBookshelf={this.props.shelf} changeBookStateFunction={this.props.changeBookStateFunction(this.props.title)}/>
+        <Changer currentBookshelf={this.props.shelf} changeBookStateFunction={this.props.changeBookStateFunction(this.props.id)}/>
       </div>
       <div className="book-title">{this.props.title}</div>
       <div className="book-authors">{this.props.authors}</div>
@@ -23,6 +23,7 @@ class Book extends Component {
 
 Book.propTypes = {
   coverURL: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   authors: PropTypes.string.isRequired,
   shelf: PropTypes.string.isRequired

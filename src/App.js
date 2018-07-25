@@ -32,15 +32,18 @@ class BooksApp extends React.Component {
     books.filter(book => (book.shelf === shelf))
   )
 
-  changeBookState = (currentShelf) => (bookTitle) => (newShelf) => {
+  changeBookState = (currentShelf) => (bookID) => (newShelf) => {
     if (currentShelf === newShelf) { return }
+
     const book = this.state[currentShelf].find((book) => (
-      book.title === bookTitle
+      book.id === bookID
     ))
+
+    BooksAPI.update(book, newShelf)
 
     this.setState({
        [currentShelf]: this.state[currentShelf].filter((book) => (
-         book.title !== bookTitle
+         book.id !== bookID
        )),
        [newShelf]: [...this.state[newShelf], book],
     })

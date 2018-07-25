@@ -9,7 +9,7 @@ class Changer extends Component {
         <select
          defaultValue={this.props.currentBookshelf}
          onChange={(event) => this.props.changeBookStateFunction(event.target.value)}
-       >
+        >
           <option value="move" disabled>Move to...</option>
           {Object.entries(shelvesDictionary).map(([key, value]) => (
             <option key={key} value={key}>{value}</option>
