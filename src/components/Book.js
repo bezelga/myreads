@@ -28,7 +28,7 @@ Book.propTypes = {
   coverURL: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  authors: PropTypes.string.isRequired,
+  authors: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   shelf: PropTypes.string.isRequired
 }
 

@@ -23,25 +23,34 @@ class BooksApp extends React.Component {
     ))
   }
 
+  booksMap = () => {
+    const result = {}
+
+    Object.entries(this.state).forEach(([shelf, books]) => {
+      books.forEach(book => (result[book.id] = shelf))
+    })
+
+    return result
+  }
+
   booksByShelf = (books, shelf) => (
     books.filter(book => (book.shelf === shelf))
   )
 
-  changeBookState = (currentShelf) => (bookID) => (newShelf) => {
-    if (currentShelf === newShelf) { return }
-
-    const book = this.state[currentShelf].find((book) => (
-      book.id === bookID
-    ))
-
+  updateBookShelf = (currentShelf, newShelf) => (book) => {
     BooksAPI.update(book, newShelf)
 
     this.setState({
-       [currentShelf]: this.state[currentShelf].filter((book) => (
-         book.id !== bookID
-       )),
-       [newShelf]: [...this.state[newShelf], book]
+      [currentShelf]: this.state[currentShelf].filter((currentShelfBook) => (
+        currentShelfBook.id !== book.id
+      )),
+      [newShelf]: [...this.state[newShelf], book]
     })
+  }
+
+  changeBookState = (currentShelf) => (bookID) => (newShelf) => {
+    if (currentShelf === newShelf) { return }
+    BooksAPI.get(bookID).then(this.updateBookShelf(currentShelf, newShelf))
   }
 
   render() {
@@ -77,7 +86,7 @@ class BooksApp extends React.Component {
           </div>
         )}/>
         <Route exact path="/search" render={() => (
-          <Search changeBookStateFunction={this.changeBookState("currentlyReading")}/>
+          <Search booksMap={this.booksMap()} changeBookStateFunction={this.changeBookState}/>
         )}/>
       </div>
     )

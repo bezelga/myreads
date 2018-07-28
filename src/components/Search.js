@@ -6,21 +6,23 @@ import { Link } from 'react-router-dom'
 class Search extends Component {
   state = {
     query: '',
-    books: []
+    books: null
   }
 
   updateQuery = (query) => {
     this.setState({ query: query.trim() })
+
+    BooksAPI.search(query).then((books) => {
+      if (Array.isArray(books)) {
+        this.setState({ books })
+      } else {
+        this.setState({ books: [] })
+      }
+    })
   }
 
   render() {
     const { query } = this.state
-
-    if (query) {
-      BooksAPI.search(query).then((books) => (
-        this.setState({ books })
-      ))
-    }
 
     return (
       <div className="search-books">
@@ -45,18 +47,27 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.books.map((book) => (
+            {this.state.books === null && (
+              <div>Type your book name</div>
+            )}
+            {this.state.books && this.state.books.length === 0 && (
+              <div>no books found</div>
+            )}
+            {this.state.books && this.state.books.map((book) => {
+              const shelf = this.props.booksMap[book.id] || "none"
+              // if (shelf !== "none") { return null }
+              return (
               <li key={book.id}>
                 <Book
                   title={book.title}
                   id={book.id}
                   authors={book.authors}
-                  shelf={this.props.status}
+                  shelf={shelf}
                   coverURL={book.imageLinks.thumbnail}
-                  changeBookStateFunction={this.props.changeBookStateFunction}
+                  changeBookStateFunction={this.props.changeBookStateFunction(shelf)}
                 />
-              </li>
-            ))}
+              </li>)
+            })}
           </ol>
         </div>
       </div>
