@@ -25,7 +25,7 @@ class Book extends Component {
 }
 
 Book.propTypes = {
-  coverURL: PropTypes.string.isRequired,
+  coverURL: PropTypes.string,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   authors: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),

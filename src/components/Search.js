@@ -10,19 +10,41 @@ class Search extends Component {
   }
 
   updateQuery = (query) => {
-    this.setState({ query: query.trim() })
+    this.setState({ query: query })
 
-    BooksAPI.search(query).then((books) => {
-      if (Array.isArray(books)) {
-        this.setState({ books })
-      } else {
-        this.setState({ books: [] })
-      }
-    })
+    // TODO: use regex
+    if (query) {
+      BooksAPI.search(query.trim()).then((books) => {
+        if (Array.isArray(books)) {
+          this.setState({ books })
+        } else {
+          this.setState({ books: [] })
+        }
+      })
+    } else {
+      // TODO: refactor
+      this.setState({ books: [] })
+    }
+  }
+
+  renderBook = (book) => {
+    const shelf = this.props.booksMap[book.id] || "none"
+    return (
+      <li key={book.id}>
+        <Book
+          title={book.title}
+          id={book.id}
+          authors={book.authors}
+          shelf={shelf}
+          coverURL={book.imageLinks && book.imageLinks.thumbnail}
+          changeBookStateFunction={this.props.changeBookStateFunction(shelf)}
+        />
+      </li>
+    )
   }
 
   render() {
-    const { query } = this.state
+    const { query, books } = this.state
 
     return (
       <div className="search-books">
@@ -47,27 +69,11 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.books === null && (
-              <div>Type your book name</div>
-            )}
-            {this.state.books && this.state.books.length === 0 && (
-              <div>no books found</div>
-            )}
-            {this.state.books && this.state.books.map((book) => {
-              const shelf = this.props.booksMap[book.id] || "none"
-              // if (shelf !== "none") { return null }
-              return (
-              <li key={book.id}>
-                <Book
-                  title={book.title}
-                  id={book.id}
-                  authors={book.authors}
-                  shelf={shelf}
-                  coverURL={book.imageLinks.thumbnail}
-                  changeBookStateFunction={this.props.changeBookStateFunction(shelf)}
-                />
-              </li>)
-            })}
+            {books === null ? (
+              <div>Books will appear here</div>
+            ) : (books.length === 0) ? (
+              <div>No books found</div>
+            ) : (books.map(book => (this.renderBook(book) )))}
           </ol>
         </div>
       </div>
