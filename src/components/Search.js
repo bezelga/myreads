@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
 import { Link } from 'react-router-dom'
+import debounce from 'lodash.debounce'
 
 class Search extends Component {
   state = {
@@ -9,18 +10,19 @@ class Search extends Component {
     books: null
   }
 
+
   cleanResults = () => {
     this.setState({ books: [] })
   }
 
+  booksAPISearch = debounce((query) => {
+    console.log('Debounced Event:', query);
+    BooksAPI.search(query.trim()).then(this.afterSearchResponse)
+  }, 500)
+
   updateQuery = (query) => {
     this.setState({ query: query, books: 'loading' })
-
-    if (query) {
-      BooksAPI.search(query.trim()).then((books) => { this.afterSearchResponse(books) })
-    } else {
-      this.cleanResults()
-    }
+    query ? this.booksAPISearch(query) : this.cleanResults()
   }
 
   afterSearchResponse = (books) => {
