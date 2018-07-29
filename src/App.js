@@ -48,9 +48,15 @@ class BooksApp extends React.Component {
     })
   }
 
+  findBook = (shelf, bookID) => {
+    const book = this.state[shelf].find(book => ( book.id === bookID ))
+    return (book ? Promise.resolve(book) : BooksAPI.get(bookID))
+  }
+
   changeBookState = (currentShelf) => (bookID) => (newShelf) => {
-    if (currentShelf === newShelf) { return }
-    BooksAPI.get(bookID).then(this.updateBookShelf(currentShelf, newShelf))
+    if (currentShelf !== newShelf) {
+      this.findBook(currentShelf, bookID).then(this.updateBookShelf(currentShelf, newShelf))
+    }
   }
 
   render() {
