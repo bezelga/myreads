@@ -9,20 +9,24 @@ class Search extends Component {
     books: null
   }
 
+  cleanResults = () => {
+    this.setState({ books: [] })
+  }
+
   updateQuery = (query) => {
     this.setState({ query: query })
 
-    // TODO: use regex
     if (query) {
-      BooksAPI.search(query.trim()).then((books) => {
-        if (Array.isArray(books)) {
-          this.setState({ books })
-        } else {
-          this.setState({ books: [] })
-        }
-      })
+      BooksAPI.search(query.trim()).then((books) => { this.afterSearchResponse(books) })
     } else {
-      // TODO: refactor
+      this.cleanResults()
+    }
+  }
+
+  afterSearchResponse = (books) => {
+    if (Array.isArray(books)) {
+      this.setState({ books })
+    } else {
       this.setState({ books: [] })
     }
   }
