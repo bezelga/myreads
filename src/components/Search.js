@@ -14,7 +14,7 @@ class Search extends Component {
   }
 
   updateQuery = (query) => {
-    this.setState({ query: query })
+    this.setState({ query: query, books: 'loading' })
 
     if (query) {
       BooksAPI.search(query.trim()).then((books) => { this.afterSearchResponse(books) })
@@ -75,6 +75,8 @@ class Search extends Component {
           <ol className="books-grid">
             {books === null ? (
               <div>Books will appear here</div>
+            ) : (books === 'loading') ? (
+              <div>Loading...</div>
             ) : (books.length === 0) ? (
               <div>No books found</div>
             ) : (books.map(book => (this.renderBook(book) )))}
