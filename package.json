@@ -7,6 +7,7 @@
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
+    "jest-localstorage-mock": "^2.2.0",
     "react-scripts": "1.1.4"
   },
   "scripts": {
