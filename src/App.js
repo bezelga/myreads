@@ -14,13 +14,13 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
-    BooksAPI.getAll().then((books) => (
+    BooksAPI.getAll().then((books) => {
       this.setState({
         currentlyReading: this.booksByShelf(books, "currentlyReading"),
         wantToRead: this.booksByShelf(books, "wantToRead"),
         read: this.booksByShelf(books, "read")
       })
-    ))
+    })
   }
 
   booksMap = () => {
