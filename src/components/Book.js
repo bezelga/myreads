@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import Changer from './Changer'
 
 class Book extends Component {
+  formatAuthors = () => {
+    const {authors} = this.props
+    if (!authors) { return "" }
+    return Array.isArray(authors) ? authors.join(", ") : authors
+  }
+
   render() {
     return(
     <div className="book">
@@ -19,10 +25,11 @@ class Book extends Component {
         />
       </div>
       <div className="book-title">{this.props.title}</div>
-      <div className="book-authors">{this.props.authors}</div>
+      <div className="book-authors">{this.formatAuthors()}</div>
     </div>
   )}
 }
+
 
 Book.propTypes = {
   coverURL: PropTypes.string,
