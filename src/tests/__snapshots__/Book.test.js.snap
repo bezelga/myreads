@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the book contract with final snapshot 1`] = `
+<div
+  className="book"
+>
+  <a
+    className="book-favorite"
+    href="/fav"
+    onClick={[Function]}
+  >
+    make favorite
+  </a>
+  <div
+    className="book-top"
+  >
+    <div
+      className="book-cover"
+      style={
+        Object {
+          "backgroundImage": "url(undefined)",
+          "height": 193,
+          "width": 128,
+        }
+      }
+    />
+    <div
+      className="book-shelf-changer"
+    >
+      <select
+        defaultValue="read"
+        onChange={[Function]}
+      >
+        <option
+          disabled={true}
+          value="move"
+        >
+          Move to...
+        </option>
+        <option
+          value="currentlyReading"
+        >
+          Currently Reading
+        </option>
+        <option
+          value="wantToRead"
+        >
+          Want to Read
+        </option>
+        <option
+          value="read"
+        >
+          Read
+        </option>
+        <option
+          value="none"
+        >
+          None
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    className="book-title"
+  >
+    MyBook
+  </div>
+  <div
+    className="book-authors"
+  >
+    
+  </div>
+</div>
+`;

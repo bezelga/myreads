@@ -34,9 +34,9 @@ class Book extends Component {
       {this.state.isFavorite ?
         <div>
           <span role="img" aria-label="love">💙</span>
-          <a onClick={this.toggleFavorite} href="/fav" className="book-favorite">unfavorite</a>
+          <a onClick={this.toggleFavorite} href="/unfav" className="book-unfavorite">unfavorite</a>
         </div>:
-      <a onClick={this.toggleFavorite} href="unfav" className="book-favorite">make favorite</a>}
+      <a onClick={this.toggleFavorite} href="/fav" className="book-favorite">make favorite</a>}
       <div className="book-top">
         <div className="book-cover" style={{
            width: 128,

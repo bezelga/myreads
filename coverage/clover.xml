@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1533732014048" clover="3.2.0">
+  <project timestamp="1533732014048" name="All files">
+    <metrics statements="85" coveredstatements="32" conditionals="36" coveredconditionals="12" methods="48" coveredmethods="18" elements="169" coveredelements="62" complexity="0" loc="85" ncloc="85" packages="3" files="9" classes="9">
+      <package name="src">
+        <metrics statements="27" coveredstatements="8" conditionals="8" coveredconditionals="0" methods="19" coveredmethods="8"/>
+        <file name="App.js" path="/app/src/App.js">
+          <metrics statements="19" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="18" coveredmethods="8"/>
+          <line num="17" count="2" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="38" count="12" type="stmt"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="54" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="57" count="12" type="stmt"/>
+          <line num="58" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="64" count="4" type="stmt"/>
+          <line num="67" count="4" type="stmt"/>
+          <line num="96" count="0" type="stmt"/>
+        </file>
+        <file name="index.js" path="/app/src/index.js">
+          <metrics statements="6" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="7" count="0" type="stmt"/>
+        </file>
+        <file name="setupTests.js" path="/app/src/setupTests.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="5" count="2" type="stmt"/>
+        </file>
+        <file name="utils.js" path="/app/src/utils.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.BooksAPI">
+        <metrics statements="21" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="11" coveredmethods="0"/>
+        <file name="index.js" path="/app/src/BooksAPI/index.js">
+          <metrics statements="21" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="11" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components">
+        <metrics statements="37" coveredstatements="24" conditionals="26" coveredconditionals="12" methods="18" coveredmethods="10"/>
+        <file name="Book.js" path="/app/src/components/Book.js">
+          <metrics statements="14" coveredstatements="14" conditionals="8" coveredconditionals="8" methods="5" coveredmethods="5"/>
+          <line num="7" count="6" type="stmt"/>
+          <line num="8" count="6" type="stmt"/>
+          <line num="9" count="6" type="stmt"/>
+          <line num="13" count="8" type="stmt"/>
+          <line num="14" count="8" type="cond" truecount="2" falsecount="0"/>
+          <line num="15" count="4" type="cond" truecount="2" falsecount="0"/>
+          <line num="19" count="2" type="stmt"/>
+          <line num="21" count="2" type="stmt"/>
+          <line num="22" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="28" count="2" type="stmt"/>
+          <line num="32" count="8" type="stmt"/>
+          <line num="59" count="2" type="stmt"/>
+        </file>
+        <file name="BookShelf.js" path="/app/src/components/BookShelf.js">
+          <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="7" count="13" type="stmt"/>
+          <line num="13" count="4" type="stmt"/>
+          <line num="30" count="1" type="stmt"/>
+        </file>
+        <file name="Changer.js" path="/app/src/components/Changer.js">
+          <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+          <line num="7" count="6" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="15" count="24" type="stmt"/>
+          <line num="23" count="2" type="stmt"/>
+        </file>
+        <file name="Search.js" path="/app/src/components/Search.js">
+          <metrics statements="15" coveredstatements="3" conditionals="14" coveredconditionals="1" methods="8" coveredmethods="1"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="53" count="1" type="stmt"/>
+          <line num="55" count="1" type="stmt"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="84" count="0" type="stmt"/>
+          <line num="92" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import Book from './components/Book'
 import BookShelf from './components/BookShelf'
 import Changer from './components/Changer'
 import Search from './components/Search'
@@ -30,14 +29,6 @@ it('matches the contract with final snapshot', () => {
 })
 
 const changeBookStateFunction = () => () => {}
-
-it('matches the book contract with final snapshot', () => {
-  const component = renderer.create(
-    <Book changeBookStateFunction={changeBookStateFunction} title="MyBook" id="123" shelf="read"></Book>
-  );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-})
 
 it('matches the bookshelf contract with final snapshot', () => {
   const component = renderer.create(
