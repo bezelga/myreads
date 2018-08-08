@@ -10,7 +10,6 @@ class Search extends Component {
     books: null
   }
 
-
   cleanResults = () => {
     this.setState({ books: [] })
   }
