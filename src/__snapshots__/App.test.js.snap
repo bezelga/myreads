@@ -1,5 +1,133 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`matches the book contract with final snapshot 1`] = `
+<div
+  className="book"
+>
+  <a
+    className="book-favorite"
+    href="unfav"
+    onClick={[Function]}
+  >
+    make favorite
+  </a>
+  <div
+    className="book-top"
+  >
+    <div
+      className="book-cover"
+      style={
+        Object {
+          "backgroundImage": "url(undefined)",
+          "height": 193,
+          "width": 128,
+        }
+      }
+    />
+    <div
+      className="book-shelf-changer"
+    >
+      <select
+        defaultValue="read"
+        onChange={[Function]}
+      >
+        <option
+          disabled={true}
+          value="move"
+        >
+          Move to...
+        </option>
+        <option
+          value="currentlyReading"
+        >
+          Currently Reading
+        </option>
+        <option
+          value="wantToRead"
+        >
+          Want to Read
+        </option>
+        <option
+          value="read"
+        >
+          Read
+        </option>
+        <option
+          value="none"
+        >
+          None
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    className="book-title"
+  >
+    MyBook
+  </div>
+  <div
+    className="book-authors"
+  >
+    
+  </div>
+</div>
+`;
+
+exports[`matches the bookshelf contract with final snapshot 1`] = `
+<div
+  className="bookshelf"
+>
+  <h2
+    className="bookshelf-title"
+  />
+  <div
+    className="bookshelf-books"
+  >
+    <ol
+      className="books-grid"
+    />
+  </div>
+</div>
+`;
+
+exports[`matches the changer contract with final snapshot 1`] = `
+<div
+  className="book-shelf-changer"
+>
+  <select
+    defaultValue="read"
+    onChange={[Function]}
+  >
+    <option
+      disabled={true}
+      value="move"
+    >
+      Move to...
+    </option>
+    <option
+      value="currentlyReading"
+    >
+      Currently Reading
+    </option>
+    <option
+      value="wantToRead"
+    >
+      Want to Read
+    </option>
+    <option
+      value="read"
+    >
+      Read
+    </option>
+    <option
+      value="none"
+    >
+      None
+    </option>
+  </select>
+</div>
+`;
+
 exports[`matches the contract with final snapshot 1`] = `
 <div
   className="app"
@@ -78,6 +206,45 @@ exports[`matches the contract with final snapshot 1`] = `
         Add a book
       </a>
     </div>
+  </div>
+</div>
+`;
+
+exports[`matches the search contract with final snapshot 1`] = `
+<div
+  className="search-books"
+>
+  <div
+    className="search-books-bar"
+  >
+    <a
+      className="close-search"
+      href="/"
+      onClick={[Function]}
+    >
+      Close
+    </a>
+    <div
+      className="search-books-input-wrapper"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Search by title or author"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="search-books-results"
+  >
+    <ol
+      className="books-grid"
+    >
+      <div>
+        Books will appear here
+      </div>
+    </ol>
   </div>
 </div>
 `;

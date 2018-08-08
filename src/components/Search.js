@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import * as BooksAPI from '../BooksAPI'
+import PropTypes from 'prop-types';
 import Book from './Book'
 import { Link } from 'react-router-dom'
 import debounce from 'lodash.debounce'
@@ -86,6 +87,10 @@ class Search extends Component {
       </div>
     )
   }
+}
+
+Search.propTypes = {
+  booksMap: PropTypes.object.isRequired
 }
 
 export default Search

@@ -61,7 +61,8 @@ Book.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   authors: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-  shelf: PropTypes.string.isRequired
+  shelf: PropTypes.string.isRequired,
+  changeBookStateFunction: PropTypes.func.isRequired
 }
 
 export default Book
