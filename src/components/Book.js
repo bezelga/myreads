@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import Changer from './Changer'
 
 class Book extends Component {
-  state = {
-    favorite: false
+  constructor(props) {
+    super(props)
+    this.state = {isFavorite: localStorage.getItem(this.props.id)}
+    this.toggleFavorite = this.toggleFavorite.bind(this);
   }
 
   formatAuthors = () => {
@@ -13,16 +15,28 @@ class Book extends Component {
     return Array.isArray(authors) ? authors.join(", ") : authors
   }
 
-  makeFavorite = (bookID) => {
-    console.log("making fav", bookID)
-    this.setState({ favorite: true })
+  toggleFavorite(event) {
+    event.preventDefault();
+
+    const {id}= this.props
+    if (localStorage.getItem(id)) {
+      localStorage.removeItem(id)
+    } else {
+      localStorage.setItem(id, 'true');
+    }
+
+    this.setState(prevState => ({ isFavorite: !prevState.isFavorite }));
   }
 
   render() {
     return(
     <div className="book">
-      {this.state.favorite && <a href="#" className="book-favorite">unfavorite</a>}
-      {!this.state.favorite && <a onClick={this.makeFavorite(this.props.id)} href="#" className="book-favorite">make favorite</a>}
+      {this.state.isFavorite ?
+        <div>
+          <span role="img" aria-label="love">💙</span>
+          <a onClick={this.toggleFavorite} href="/fav" className="book-favorite">unfavorite</a>
+        </div>:
+      <a onClick={this.toggleFavorite} href="unfav" className="book-favorite">make favorite</a>}
       <div className="book-top">
         <div className="book-cover" style={{
            width: 128,
