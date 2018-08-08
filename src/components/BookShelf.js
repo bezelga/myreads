@@ -4,6 +4,7 @@ import Book from './Book'
 import { shelvesDictionary } from '../utils'
 
 class BookShelf extends Component {
+
   render() {
     return (
       <div className="bookshelf">
@@ -17,6 +18,7 @@ class BookShelf extends Component {
                   id={book.id}
                   authors={book.authors}
                   shelf={this.props.status}
+                  makeFavorite={this.makeFavorite}
                   coverURL={book.imageLinks && book.imageLinks.thumbnail}
                   changeBookStateFunction={this.props.changeBookStateFunction}
                 />

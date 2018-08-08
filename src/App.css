@@ -122,6 +122,9 @@ body, .app {
 .book {
   width: 140px;
 }
+.book-favorite {
+  font-weight: bold;
+}
 .book-title,
 .book-authors {
   font-size: 0.8em;

@@ -29,7 +29,7 @@ class Search extends Component {
     if (Array.isArray(books)) {
       this.setState({ books })
     } else {
-      this.setState({ books: [] })
+      this.cleanResults()
     }
   }
 

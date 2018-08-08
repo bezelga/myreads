@@ -3,15 +3,26 @@ import PropTypes from 'prop-types';
 import Changer from './Changer'
 
 class Book extends Component {
+  state = {
+    favorite: false
+  }
+
   formatAuthors = () => {
     const {authors} = this.props
     if (!authors) { return "" }
     return Array.isArray(authors) ? authors.join(", ") : authors
   }
 
+  makeFavorite = (bookID) => {
+    console.log("making fav", bookID)
+    this.setState({ favorite: true })
+  }
+
   render() {
     return(
     <div className="book">
+      {this.state.favorite && <a href="#" className="book-favorite">unfavorite</a>}
+      {!this.state.favorite && <a onClick={this.makeFavorite(this.props.id)} href="#" className="book-favorite">make favorite</a>}
       <div className="book-top">
         <div className="book-cover" style={{
            width: 128,

@@ -10,7 +10,7 @@ class BooksApp extends React.Component {
     currentlyReading: [],
     wantToRead: [],
     read: [],
-    none: []
+    none: [],
   }
 
   componentDidMount() {
@@ -22,6 +22,7 @@ class BooksApp extends React.Component {
       })
     })
   }
+
 
   booksMap = () => {
     const result = {}
