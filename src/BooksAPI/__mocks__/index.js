@@ -9,3 +9,7 @@ export const getAll = () =>
       title: 'A book with string as author',
       authors: 'I am a string'
     }])
+
+
+export const update = () =>
+  console.log('update')

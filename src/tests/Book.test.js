@@ -14,7 +14,7 @@ it('matches the book contract with final snapshot', () => {
   expect(tree).toMatchSnapshot();
 })
 
-test('Book changes favorite after toggle', () => {
+test('Book changes favorite state after toggle', () => {
   const book = shallow(bookSample)
 
   book.find('.book-favorite').first().simulate('click', { preventDefault() {} })

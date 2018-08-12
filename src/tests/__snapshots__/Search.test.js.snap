@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the search contract with final snapshot 1`] = `
+<div
+  className="search-books"
+>
+  <div
+    className="search-books-bar"
+  >
+    <a
+      className="close-search"
+      href="/"
+      onClick={[Function]}
+    >
+      Close
+    </a>
+    <div
+      className="search-books-input-wrapper"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Search by title or author"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <div
+    className="search-books-results"
+  >
+    <ol
+      className="books-grid"
+    >
+      <div>
+        Books will appear here
+      </div>
+    </ol>
+  </div>
+</div>
+`;

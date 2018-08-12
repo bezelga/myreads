@@ -6,6 +6,7 @@ import Changer from './components/Changer'
 import Search from './components/Search'
 import { MemoryRouter } from 'react-router-dom'
 import renderer from 'react-test-renderer'
+import {shallow} from 'enzyme'
 
 /**
  This course is not designed to teach Test Driven Development.
@@ -14,6 +15,8 @@ import renderer from 'react-test-renderer'
 **/
 
 jest.mock('./BooksAPI')
+
+const appSample = <MemoryRouter><App /></MemoryRouter>
 
 it('renders without crashing', () => {
   const div = document.createElement('div')
@@ -28,6 +31,19 @@ it('matches the contract with final snapshot', () => {
   expect(tree).toMatchSnapshot();
 })
 
+const bookSample = {id: '123',
+  shelf: 'currentlyReading',
+  title: 'React Trainning',
+  authors: ['Fabiano Beselga']}
+
+it('updates the bookshelf', () => {
+  const wrapper = renderer.create(appSample);
+  const app = wrapper.root.findByType(App)
+  const inst = app.instance
+  inst.updateBookShelf("currentlyReading","read")(bookSample)
+  // TODO: create expectation
+})
+
 const changeBookStateFunction = () => () => {}
 
 it('matches the bookshelf contract with final snapshot', () => {
@@ -38,18 +54,4 @@ it('matches the bookshelf contract with final snapshot', () => {
   expect(tree).toMatchSnapshot();
 })
 
-it('matches the changer contract with final snapshot', () => {
-  const component = renderer.create(
-    <Changer currentBookshelf="read" changeBookStateFunction={changeBookStateFunction}/>
-  );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-})
 
-it('matches the search contract with final snapshot', () => {
-  const component = renderer.create(
-    <MemoryRouter><Search booksMap={{}} changeBookStateFunction={changeBookStateFunction}/></MemoryRouter>
-  );
-  let tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-})
