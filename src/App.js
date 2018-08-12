@@ -20,7 +20,7 @@ class BooksApp extends React.Component {
         wantToRead: this.booksByShelf(books, "wantToRead"),
         read: this.booksByShelf(books, "read")
       })
-    })
+    }).catch((error) => { console.log(error) })
   }
 
 
